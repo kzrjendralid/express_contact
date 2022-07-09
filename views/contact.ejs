@@ -1,0 +1,50 @@
+
+<div class="container">
+    <div class="row">
+        <h2 class=" my-4">Contact List</h2>
+
+        <div class="col-10 ">
+            <a href="/contact/add" class="btn btn-primary mb-3" >Add Contact</a>
+            <% if (msg.length != 0) { %>
+                <div class="alert alert-success" role="alert">
+                    <%= msg %> 
+                </div>
+            <% } %>
+            
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">No HP</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% if (contacts.length < 1) { %>
+                     <tr>
+                        <td colspan="4">
+                            <div class="alert alert-danger fw-bold text-center" role="alert">
+                                Contacts are empty
+                               </div>
+                        </td>
+                     </tr>
+                    <% } %>
+
+                    <% contacts.forEach((contact, index) => { %>
+                        
+                        <tr>
+                            <th scope="row"><%= index + 1 %> </th>
+                            <td><%= contact.nama %> </td>
+                            <td><%= contact.nohp %>  </td>
+                            <td>
+                                <a href="/contact/<%= contact.nama %> " class="btn btn-success badge rounded-pill">Detail</a>
+                            </td>
+                          </tr>
+                    <% }) %>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
